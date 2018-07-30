@@ -1,4 +1,5 @@
 //link referensi tarif RS http://www.biaya.net/2015/12/tarif-layanan-rsud-dki-jakarta.html
+//https://knowledgebase.trustmedis.com/rawatjalan/pendaftaranrj.html
 1.pasien ok
 2.registrasi ok		
 4.rawat jalan ok		===========> tidak ada kelas
