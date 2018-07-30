@@ -1,4 +1,4 @@
-//http://www.biaya.net/2015/12/tarif-layanan-rsud-dki-jakarta.html
+//link referensi tarif RS http://www.biaya.net/2015/12/tarif-layanan-rsud-dki-jakarta.html
 $(document).on('submit', 'form.AjaxForm', function() {            
         $.ajax({
             url     : $(this).attr('action'),
