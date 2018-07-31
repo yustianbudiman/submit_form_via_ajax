@@ -92,7 +92,7 @@ rawat inap:
 
 DROP TABLE IF EXISTS 'rawat_jalan';
 CREATE TABLE 'rawat_jalan' (
-  'no_rawat_jalan'
+  'id_rawat_jalan'
   'no_medic',
   'no_rawat',
   'taggal_rawat',
@@ -110,7 +110,7 @@ CREATE TABLE 'rawat_jalan' (
 
 DROP TABLE IF EXISTS 'rawat_inap';
 CREATE TABLE 'rawat_inap' (
-  'no_rawat_inap'
+  'id_rawat_inap'
   'no_medic',
   'no_rawat',
   'kd_bed',
@@ -125,6 +125,51 @@ CREATE TABLE 'rawat_inap' (
   'updated_by' int(11) NOT NULL,
   PRIMARY KEY ('no_rawat_jalan')
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+
+DROP TABLE IF EXISTS 'tindakan';
+CREATE TABLE 'tindakan' (
+  'id_tindakan'
+  'no_medic',
+  'no_rawat',
+  'taggal_tindakan',
+  'waktu',
+  'jumlah',
+  'biaya',
+  'subtotal',
+  'keterangan' varchar(100) NOT NULL,,
+  'status' int(11) NOT NULL,,
+  'created_time' timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  'created_ip' varchar(15) NOT NULL,
+  'created_by' int(11) NOT NULL,
+  'updated_time' timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  'updated_ip' varchar(15) NOT NULL,
+  'updated_by' int(11) NOT NULL,
+  PRIMARY KEY ('no_rawat_jalan')
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+
+DROP TABLE IF EXISTS 'radiologi';
+CREATE TABLE 'radiologi' (
+  'id_radiologi'
+  'no_medic',
+  'no_rawat',
+  'taggal_tindakan',
+  'waktu',
+  'jumlah',
+  'biaya',
+  'subtotal',
+  'keterangan' varchar(100) NOT NULL,,
+  'status' int(11) NOT NULL,,
+  'created_time' timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  'created_ip' varchar(15) NOT NULL,
+  'created_by' int(11) NOT NULL,
+  'updated_time' timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  'updated_ip' varchar(15) NOT NULL,
+  'updated_by' int(11) NOT NULL,
+  PRIMARY KEY ('no_rawat_jalan')
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
 
 
 
