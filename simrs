@@ -1,0 +1,135 @@
+$menuItems = [
+				['label' => 'Главная', 'url' => ['/site/index'], "icon" => "home"],
+				['label' => 'Новости', "icon" => "list", "url" => "#!", 'items' => [
+						['label' => 'Новости', 'url' => ['/news']], 
+						['label' => 'Категории', 'url' => ['/category']]
+						]
+				], 
+				['label' => 'Настройки сезонов', "url" => "#!", "icon" => "list-alt", 'items' => [
+						['label' => 'Игры', 'url' => ['/games']], 
+						['label' => 'Таблица', 'url' => ['/season-details']], 
+						['label' => 'Сезоны', 'url' => ['/seasons']], 
+						['label' => 'Команды', 'url' => ['/teams']], 
+						['label' => 'Игроки', 'url' => ['/players']], 
+						['label' => 'Тренерский штаб', 'url' => ['/coaching-staff']], 
+						['label' => 'Подразделы штаба', 'url' => ['/category-caches']], 
+						['label' => 'Категории игр', 'url' => ['/category-games']]
+						]
+				], 
+				['label' => 'Настройка сайта', "url" => "#!", "icon" => "cog", 'items' => [
+						['label' => 'Страницы', 'url' => ['/pages']], 
+						['label' => 'Меню', 'url' => ['/menu']], 
+						['label' => 'Галерея', 'url' => ['/gallery']], 
+						['label' => 'Гостевая', 'url' => ['/guest-book']], 
+						['label' => 'Голосование', 'url' => ['/questions']], 
+						['label' => 'Вопросы клубу', 'url' => ['/club-questions']]
+						]
+				]
+			];
+			
+1.pasien ok
+2.registrasi ok		
+4.rawat jalan ok		===========> tidak ada kelas
+3.rawat inap not ok		===========> ada kelas
+5.IGD  ok				===========> tidak ada kelas
+	-lab not ok 		===========> tidak ada kelas
+	-radiologi not ok	===========> tidak ada kelas
+	-farmasi not ok		===========> tidak ada kelas
+6.billing not ok
+7.untuk poin 3,4,dan 5 tindakan di bedakan walaupun nama tindakannya sama
+
+rawat jalan:
+
+	no_rawat_jalan
+	no_medic
+	no_rawat
+	taggal_rawat
+	keterangan
+	status
+	created_time
+	created_by
+	created_ip
+	updated_time
+	updated_by
+	updated_ip
+				tindakan :
+					aff hecting
+				obat
+					amoxilin
+				penunjang
+					radiologi
+						-thorax
+					lab
+						-serology
+				rekam medik
+
+rawat inap:
+
+	no_rawat_inap
+	no_medic
+	no_rawat
+	Kd_bed
+	taggal_rawat
+	keterangan
+	status
+	created_time
+	created_by
+	created_ip
+	updated_time
+	updated_by
+	updated_ip
+				tindakan :
+					aff hecting
+				obat
+					amoxilin
+				penunjang
+					radiologi
+						-thorax
+					lab
+						-serology
+				rekam medik
+
+
+DROP TABLE IF EXISTS 'rawat_jalan';
+CREATE TABLE 'rawat_jalan' (
+  'no_rawat_jalan'
+  'no_medic',
+  'no_rawat',
+  'taggal_rawat',
+  'keterangan' varchar(100) NOT NULL,,
+  'status' int(11) NOT NULL,,
+  'created_time' timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  'created_ip' varchar(15) NOT NULL,
+  'created_by' int(11) NOT NULL,
+  'updated_time' timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  'updated_ip' varchar(15) NOT NULL,
+  'updated_by' int(11) NOT NULL,
+  PRIMARY KEY ('no_rawat_jalan')
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+
+DROP TABLE IF EXISTS 'rawat_inap';
+CREATE TABLE 'rawat_inap' (
+  'no_rawat_inap'
+  'no_medic',
+  'no_rawat',
+  'kd_bed',
+  'taggal_rawat',
+  'keterangan' varchar(100) NOT NULL,,
+  'status' int(11) NOT NULL,,
+  'created_time' timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  'created_ip' varchar(15) NOT NULL,
+  'created_by' int(11) NOT NULL,
+  'updated_time' timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  'updated_ip' varchar(15) NOT NULL,
+  'updated_by' int(11) NOT NULL,
+  PRIMARY KEY ('no_rawat_jalan')
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+
+
+
+			
+
+
+
