@@ -134,6 +134,8 @@ CREATE TABLE 'tindakan' (
   'no_rawat',
   'taggal_tindakan',
   'waktu',
+  'kode_tindakan'
+  'nama_tindakan'
   'jumlah',
   'biaya',
   'subtotal',
@@ -156,6 +158,32 @@ CREATE TABLE 'radiologi' (
   'no_rawat',
   'taggal_tindakan',
   'waktu',
+  'kode_tindakan'
+  'nama_tindakan'
+  'jumlah',
+  'biaya',
+  'subtotal',
+  'keterangan' varchar(100) NOT NULL,,
+  'status' int(11) NOT NULL,,
+  'created_time' timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  'created_ip' varchar(15) NOT NULL,
+  'created_by' int(11) NOT NULL,
+  'updated_time' timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  'updated_ip' varchar(15) NOT NULL,
+  'updated_by' int(11) NOT NULL,
+  PRIMARY KEY ('no_rawat_jalan')
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+
+DROP TABLE IF EXISTS 'laboratorium';
+CREATE TABLE 'laboratorium' (
+  'id_laboratorium'
+  'no_medic',
+  'no_rawat',
+  'taggal_tindakan',
+  'waktu',
+  'kode_tindakan'
+  'nama_tindakan'
   'jumlah',
   'biaya',
   'subtotal',
