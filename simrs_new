@@ -1,1 +1,294 @@
 
+$menuItems = [
+				['label' => 'Главная', 'url' => ['/site/index'], "icon" => "home"],
+				['label' => 'Новости', "icon" => "list", "url" => "#!", 'items' => [
+						['label' => 'Новости', 'url' => ['/news']], 
+						['label' => 'Категории', 'url' => ['/category']]
+						]
+				], 
+				['label' => 'Настройки сезонов', "url" => "#!", "icon" => "list-alt", 'items' => [
+						['label' => 'Игры', 'url' => ['/games']], 
+						['label' => 'Таблица', 'url' => ['/season-details']], 
+						['label' => 'Сезоны', 'url' => ['/seasons']], 
+						['label' => 'Команды', 'url' => ['/teams']], 
+						['label' => 'Игроки', 'url' => ['/players']], 
+						['label' => 'Тренерский штаб', 'url' => ['/coaching-staff']], 
+						['label' => 'Подразделы штаба', 'url' => ['/category-caches']], 
+						['label' => 'Категории игр', 'url' => ['/category-games']]
+						]
+				], 
+				['label' => 'Настройка сайта', "url" => "#!", "icon" => "cog", 'items' => [
+						['label' => 'Страницы', 'url' => ['/pages']], 
+						['label' => 'Меню', 'url' => ['/menu']], 
+						['label' => 'Галерея', 'url' => ['/gallery']], 
+						['label' => 'Гостевая', 'url' => ['/guest-book']], 
+						['label' => 'Голосование', 'url' => ['/questions']], 
+						['label' => 'Вопросы клубу', 'url' => ['/club-questions']]
+						]
+				]
+			];
+			
+1.pasien ok
+2.registrasi ok		
+4.rawat jalan ok		===========> tidak ada kelas
+3.rawat inap  ok		===========> ada kelas
+5.IGD  ok				===========> tidak ada kelas
+	-lab not ok 		===========> tidak ada kelas
+	-radiologi  ok	===========> tidak ada kelas
+	-farmasi not ok		===========> tidak ada kelas
+6.billing not ok
+7.untuk poin 3,4,dan 5 tindakan di bedakan walaupun nama tindakannya sama
+
+rawat jalan:
+
+	no_rawat_jalan
+	no_medic
+	no_rawat
+	taggal_rawat
+	keterangan
+	status
+	created_time
+	created_by
+	created_ip
+	updated_time
+	updated_by
+	updated_ip
+				tindakan :
+					aff hecting
+				obat
+					amoxilin
+				penunjang
+					radiologi
+						-thorax
+					lab
+						-serology
+				rekam medik
+
+rawat inap:
+
+	no_rawat_inap
+	no_medic
+	no_rawat
+	Kd_bed
+	taggal_rawat
+	keterangan
+	status
+	created_time
+	created_by
+	created_ip
+	updated_time
+	updated_by
+	updated_ip
+				tindakan :
+					aff hecting
+				obat
+					amoxilin
+				penunjang
+					radiologi
+						-thorax
+					lab
+						-serology
+				rekam medik
+
+
+DROP TABLE IF EXISTS 'rawat_jalan';
+CREATE TABLE 'rawat_jalan' (
+  'id_rawat_jalan'
+  'no_medic',
+  'no_rawat',
+  'taggal_rawat',
+  'keterangan' varchar(100) NOT NULL,,
+  'status' int(11) NOT NULL,,
+  'created_time' timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  'created_ip' varchar(15) NOT NULL,
+  'created_by' int(11) NOT NULL,
+  'updated_time' timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  'updated_ip' varchar(15) NOT NULL,
+  'updated_by' int(11) NOT NULL,
+  PRIMARY KEY ('no_rawat_jalan')
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+
+DROP TABLE IF EXISTS 'rawat_inap';
+CREATE TABLE 'rawat_inap' (
+  'id_rawat_inap'
+  'no_medic',
+  'no_rawat',
+  'kd_bed',
+  'taggal_rawat',
+  'keterangan' varchar(100) NOT NULL,,
+  'status' int(11) NOT NULL,,
+  'created_time' timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  'created_ip' varchar(15) NOT NULL,
+  'created_by' int(11) NOT NULL,
+  'updated_time' timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  'updated_ip' varchar(15) NOT NULL,
+  'updated_by' int(11) NOT NULL,
+  PRIMARY KEY ('no_rawat_jalan')
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+
+DROP TABLE IF EXISTS 'tindakan';
+CREATE TABLE 'tindakan' (
+  'id_tindakan int(11)',
+  'no_medic',
+  'no_rawat',
+  'no_referensi' int(11),
+  'taggal_tindakan'  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  'waktu',
+  'kode_tindakan'
+  'nama_tindakan' varchar(100) NOT NULL,
+  'jumlah' int(11),
+  'biaya' int(11),
+  'subtotal' int(11),
+  'keterangan' varchar(100) NOT NULL,
+  'status' int(11) NOT NULL,,
+  'created_time' timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  'created_ip' varchar(15) NOT NULL,
+  'created_by' int(11) NOT NULL,
+  'updated_time' timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  'updated_ip' varchar(15) NOT NULL,
+  'updated_by' int(11) NOT NULL,
+  PRIMARY KEY ('no_rawat_jalan')
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+DROP TABLE IF EXISTS 'head_radilogi';
+CREATE TABLE 'head_radilogi' (
+  'id_head_radiologi' varchar(7) NOT NULL,
+  'no_medic' varchar(15) NOT NULL,
+  'no_rawat' varchar(17) NOT NULL,
+  'no_referensi' varchar(17) NOT NULL),
+  'status' int(11) NOT NULL,
+  'created_time' timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  'created_ip' varchar(15) NOT NULL,
+  'created_by' int(11) NOT NULL,
+  'updated_time' timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  'updated_ip' varchar(15) NOT NULL,
+  'updated_by' int(11) NOT NULL,
+  PRIMARY KEY ('id_head_radiologi')
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+DROP TABLE IF EXISTS 'radiologi';
+CREATE TABLE 'radiologi' (
+  'id_radiologi int(11)',
+  'id_head_radiologi' varchar(7) NOT NULL,
+  'taggal_tindakan'  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  'waktu',
+  'kode_tindakan'
+  'nama_tindakan' varchar(100) NOT NULL,
+  'jumlah' int(11),
+  'biaya' int(11),
+  'subtotal' int(11),
+  'keterangan' varchar(100) NOT NULL,,
+  'status' int(11) NOT NULL,,
+  'created_time' timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  'created_ip' varchar(15) NOT NULL,
+  'created_by' int(11) NOT NULL,
+  'updated_time' timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  'updated_ip' varchar(15) NOT NULL,
+  'updated_by' int(11) NOT NULL,
+  PRIMARY KEY ('no_rawat_jalan')
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+
+DROP TABLE IF EXISTS 'head_laboratorium';
+CREATE TABLE 'head_radilogi' (
+  'id_head_laboratorium' varchar(7) NOT NULL,
+  'no_medic' varchar(15) NOT NULL,
+  'no_rawat' varchar(17) NOT NULL,
+  'no_referensi' varchar(17) NOT NULL),
+  'status' int(11) NOT NULL,
+  'created_time' timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  'created_ip' varchar(15) NOT NULL,
+  'created_by' int(11) NOT NULL,
+  'updated_time' timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  'updated_ip' varchar(15) NOT NULL,
+  'updated_by' int(11) NOT NULL,
+  PRIMARY KEY ('id_head_laboratorium')
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+DROP TABLE IF EXISTS 'laboratorium';
+CREATE TABLE 'laboratorium' (
+  'id_laboratorium' int(11),
+  'id_head_laboratorium' varchar(7) NOT NULL,
+  'taggal_tindakan'  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  'waktu',
+  'kode_tindakan'
+  'nama_tindakan' varchar(100) NOT NULL,
+  'jumlah' int(11),
+  'biaya' int(11),
+  'subtotal' int(11),
+  'keterangan' varchar(100) NOT NULL,,
+  'status' int(11) NOT NULL,,
+  'created_time' timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  'created_ip' varchar(15) NOT NULL,
+  'created_by' int(11) NOT NULL,
+  'updated_time' timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  'updated_ip' varchar(15) NOT NULL,
+  'updated_by' int(11) NOT NULL,
+  PRIMARY KEY ('no_rawat_jalan')
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+
+    public function get_client_ip() {
+        if (!empty($_SERVER['HTTP_CLIENT_IP']))   //check ip from share internet
+        {
+            $ip=$_SERVER['HTTP_CLIENT_IP'];
+        }
+        elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR']))   //to check ip is pass from proxy
+        {
+            $ip=$_SERVER['HTTP_X_FORWARDED_FOR'];
+        }
+        else
+        {
+            $ip=$_SERVER['REMOTE_ADDR'];
+        }
+        return $ip;
+    }
+
+Detail  
+================================================================
+||DATA PSN                                                    ||
+||                                                            ||
+||                                                            ||
+||                                                            ||
+||                                                            ||
+||                                                            ||
+||                                                            ||
+||                                                            ||
+================================================================
+PMRSK  TIN  FRM  RAD  LAB  ADM  CTT                           ||
+=====||===||===||===||===||===||===                           ||
+||                                                            ||
+||                                                            ||
+||                                                            ||
+||                                                            ||
+||                                                            ||
+||                                                            ||
+================================================================
+
+
+PMRSK  
+================================================================
+||DATA PSN                                                    ||
+||                                                            ||
+||                                                            ||
+||                                                            ||
+||                                                            ||
+||                                                            ||
+||                                                            ||
+||                                                            ||
+================================================================
+PMRSK                                                         ||
+=====                                                 add del ||
+||                                                            ||
+||____________________________________________________________||
+||____________________________________________________________||
+||____________________________________________________________||
+||____________________________________________________________||
+||____________________________________________________________||
+||                                                            ||
+===============================================================
+
+
+struktur table
