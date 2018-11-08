@@ -1,0 +1,23 @@
+    CREATE TRIGGER ins_number
+        BEFORE INSERT
+        ON fisik
+        FOR EACH ROW
+    BEGIN
+      DECLARE cur_val bigint(20);
+			DECLARE bulan CHAR(2);
+
+			SELECT MAX(RIGHT(no_transaksi_fisik, 5)) INTO cur_val  from fisik;
+			SELECT MONTH(CURDATE()) INTO bulan;
+
+			IF cur_val <9 THEN
+      SET NEW.no_transaksi_fisik =CONCAT(bulan,'0000',(cur_val)+1);
+			ELSEIF cur_val <99 THEN
+			SET NEW.no_transaksi_fisik =CONCAT(bulan,'000',(cur_val)+1);
+			ELSEIF cur_val <999 THEN
+			SET NEW.no_transaksi_fisik =CONCAT(bulan,'00',(cur_val)+1);
+			ELSEIF cur_val <9999 THEN
+			SET NEW.no_transaksi_fisik =CONCAT(bulan,'0',(cur_val)+1);
+			ELSEIF cur_val <99999 THEN
+			SET NEW.no_transaksi_fisik =CONCAT(bulan,'',(cur_val)+1);
+			END IF;
+	end
